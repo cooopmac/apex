@@ -67,7 +67,7 @@ export default function Home() {
                         </Button>
                         <Button
                             variant="ghost"
-                            className="text-white border border-white/30 hover:bg-white/10 font-light px-8 py-6 rounded-xl text-lg transition-all duration-200 hover:scale-105"
+                            className="text-white border border-white/30 hover:bg-white/10 hover:text-white font-light px-8 py-6 rounded-xl text-lg transition-all duration-200 hover:scale-105"
                             onClick={() =>
                                 (window.location.href = "/submit-claim")
                             }
