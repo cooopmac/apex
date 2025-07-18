@@ -4,6 +4,7 @@ import Silk from "@/backgrounds/Silk/Silk";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { Footer } from "@/components/footer";
 
 export default function RegisterShop() {
     const [formData, setFormData] = useState({
@@ -105,19 +106,20 @@ export default function RegisterShop() {
     return (
         <div className="min-h-screen relative">
             {/* Silk Background */}
-            <div className="absolute inset-0">
+            <div className="fixed inset-0 -z-10">
                 <Silk
-                    color="#6B46C1"
-                    speed={3}
-                    scale={2}
-                    noiseIntensity={1.2}
+                    color="#b81010"
+                    speed={5}
+                    scale={1}
+                    noiseIntensity={1.5}
+                    rotation={0}
                 />
             </div>
 
             <div className="relative pt-24 pb-12 px-4">
                 <div className="max-w-4xl mx-auto">
                     {/* Glassmorphism Form Container */}
-                    <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-8 shadow-lg">
+                    <div className="backdrop-blur-md bg-black/30 border border-white/10 rounded-2xl p-8 shadow-lg">
                         {/* Page Title */}
                         <div className="text-left mb-8">
                             <h1 className="text-6xl font-bold text-white mb-2">
@@ -398,7 +400,7 @@ export default function RegisterShop() {
                             <div className="pt-6 text-center">
                                 <Button
                                     type="submit"
-                                    className="bg-white/20 text-white hover:bg-white/30 border border-white/20 px-8 py-5 rounded-xl font-medium text-lg backdrop-blur-sm transition-colors duration-200"
+                                    className="bg-white/20 text-white hover:bg-white/30 hover:text-white border border-white/10 px-8 py-5 rounded-xl font-medium text-lg backdrop-blur-sm transition-colors duration-200"
                                 >
                                     Review My Registration
                                 </Button>
@@ -407,6 +409,9 @@ export default function RegisterShop() {
                     </div>
                 </div>
             </div>
+
+            {/* Footer */}
+            <Footer />
         </div>
     );
 }

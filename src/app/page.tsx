@@ -3,21 +3,26 @@
 import Silk from "@/backgrounds/Silk/Silk";
 import { Button } from "@/components/ui/button";
 import { AnimatedShinyText } from "@/components/animated-shiny-text";
+import { Footer } from "@/components/footer";
+import { Feature } from "@/components/feature";
+import { FAQ } from "@/components/faq";
+import { Brochure } from "@/components/brochure";
 
 export default function Home() {
     return (
         <div className="min-h-screen relative">
             {/* Silk Background */}
-            <div className="absolute inset-0">
+            <div className="fixed inset-0 -z-10">
                 <Silk
-                    color="#6B46C1"
+                    color="#b81010"
                     speed={5}
-                    scale={2}
-                    noiseIntensity={1.2}
+                    scale={1}
+                    noiseIntensity={1.5}
+                    rotation={0}
                 />
             </div>
 
-            <div className="relative flex items-center justify-center h-screen px-4">
+            <div className="relative flex items-center justify-center min-h-[83vh] px-4">
                 <div className="text-center max-w-4xl mx-auto">
                     {/* Announcement Bar */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-12">
@@ -77,6 +82,18 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            {/* Features & FAQ Section */}
+            <div className="w-full bg-black/10 backdrop-blur-sm">
+                <Feature />
+                <FAQ />
+            </div>
+
+            {/* Brochure Section */}
+            <Brochure />
+
+            {/* Footer */}
+            <Footer />
         </div>
     );
 }

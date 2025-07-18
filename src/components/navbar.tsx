@@ -39,7 +39,7 @@ export default function Navbar() {
         >
             <div className="relative">
                 {/* Glassmorphism container */}
-                <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-6 py-3 shadow-lg">
+                <div className="backdrop-blur-md bg-black/30 border border-white/10 rounded-2xl px-6 py-3 shadow-lg">
                     <div className="flex items-center justify-between">
                         {/* Company name */}
                         <a
