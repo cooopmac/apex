@@ -67,7 +67,7 @@ export function Footer() {
 
             <div className="max-w-6xl mx-auto grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
                 <AnimatedContainer className="space-y-4">
-                    <FrameIcon className="size-8 text-white" />
+                    <h1 className="text-white text-2xl font-bold">ApexLRP</h1>
                     <p className="text-white/70 mt-8 text-sm md:mt-0">
                         © {new Date().getFullYear()} ApexLRP. All rights
                         reserved.

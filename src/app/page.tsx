@@ -7,10 +7,13 @@ import { Footer } from "@/components/footer";
 import { Feature } from "@/components/feature";
 import { FAQ } from "@/components/faq";
 import { Brochure } from "@/components/brochure";
+import { InfiniteSlider } from "@/components/infinite-slider";
+import { ProgressiveBlur } from "@/components/progressive-blur";
+import { motion } from "framer-motion";
 
 export default function Home() {
     return (
-        <div className="min-h-screen relative">
+        <div className="min-h-screen relative overflow-hidden">
             {/* Silk Background */}
             <div className="fixed inset-0 -z-10">
                 <Silk
@@ -22,10 +25,19 @@ export default function Home() {
                 />
             </div>
 
-            <div className="relative flex items-center justify-center min-h-[83vh] px-4">
+            <div className="relative flex items-center justify-center min-h-[80vh] px-4 z-10">
                 <div className="text-center max-w-4xl mx-auto">
                     {/* Announcement Bar */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.5,
+                            ease: [0.25, 0.4, 0.25, 1],
+                        }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+                    >
                         <AnimatedShinyText
                             className="text-sm font-light text-white/90 max-w-none mx-0 bg-gradient-to-r from-transparent via-white/80 via-50% to-transparent"
                             shimmerWidth={60}
@@ -45,23 +57,52 @@ export default function Home() {
                                 d="M9 5l7 7-7 7"
                             />
                         </svg>
-                    </div>
+                    </motion.div>
 
                     {/* Main Heading */}
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-tight">
-                        We Cover Your{" "}
-                        <span className="block">Warranty Labour Costs</span>
-                    </h1>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.7,
+                            ease: [0.25, 0.4, 0.25, 1],
+                        }}
+                    >
+                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-tight">
+                            We Cover Your{" "}
+                            <span className="block">Warranty Labour Costs</span>
+                        </h1>
+                    </motion.div>
 
                     {/* Subtitle */}
-                    <p className="text-xl md:text-2xl font-light text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto">
-                        Enhance your shop's efficiency with our Labour Recovery
-                        Program. We cover labour costs for warranty repairs up
-                        to 24 months or 40,000 km.
-                    </p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.9,
+                            ease: [0.25, 0.4, 0.25, 1],
+                        }}
+                    >
+                        <p className="text-xl md:text-2xl font-light text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto">
+                            Enhance your shop's efficiency with our Labour
+                            Recovery Program. We cover labour costs for warranty
+                            repairs up to 24 months or 40,000 km.
+                        </p>
+                    </motion.div>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 1,
+                            delay: 1.1,
+                            ease: [0.25, 0.4, 0.25, 1],
+                        }}
+                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                    >
                         <Button
                             className="bg-white text-black hover:bg-white/90 font-medium px-8 py-6 rounded-xl text-lg transition-all duration-200 hover:scale-105"
                             onClick={() =>
@@ -79,9 +120,89 @@ export default function Home() {
                         >
                             Submit a Claim
                         </Button>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
+
+            {/* Infinite Slider Section */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                    duration: 1,
+                    delay: 1.3,
+                    ease: [0.25, 0.4, 0.25, 1],
+                }}
+                className="w-full pt-0 pb-0"
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.8,
+                        delay: 1.5,
+                        ease: [0.25, 0.4, 0.25, 1],
+                    }}
+                    className="text-center mb-4"
+                >
+                    <p className="text-white/50 text-sm font-medium uppercase tracking-wider">
+                        Powering the best automotive shops
+                    </p>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.8,
+                        delay: 1.7,
+                        ease: [0.25, 0.4, 0.25, 1],
+                    }}
+                    className="relative py-6 md:w-[calc(100%-11rem)] mx-auto"
+                >
+                    <InfiniteSlider speedOnHover={0} speed={50} gap={112}>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ 24 Month Coverage Period
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ Up to $130 Labour Rate
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ Quick 3-5 Day Processing
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ E-Transfer Payments
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ Designed for 10 Bays or Fewer
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ Labour Recovery Program
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ Commercial Vehicle Coverage
+                            </div>
+                        </div>
+                        <div className="flex">
+                            <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
+                                ✓ Warranty Repair Protection
+                            </div>
+                        </div>
+                    </InfiniteSlider>
+                </motion.div>
+            </motion.div>
 
             {/* Features & FAQ Section */}
             <div className="w-full bg-black/10 backdrop-blur-sm">
