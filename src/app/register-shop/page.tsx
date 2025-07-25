@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Footer } from "@/components/footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function RegisterShop() {
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({
         serviceFacilityName: "",
         streetAddress: "",
@@ -123,11 +125,10 @@ export default function RegisterShop() {
                         {/* Page Title */}
                         <div className="text-left mb-8">
                             <h1 className="text-6xl font-bold text-white mb-2">
-                                Register My Shop
+                                {t("registerShopTitle")}
                             </h1>
                             <p className="text-white/80 text-lg">
-                                Complete the form below to register your shop
-                                with our program
+                                {t("registerShopSubtitle")}
                             </p>
                         </div>
 
@@ -135,12 +136,12 @@ export default function RegisterShop() {
                             {/* Shop Details */}
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">
-                                    Shop Details
+                                    {t("shopDetailsTitle")}
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Service facility name:
+                                            {t("serviceFacilityNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -152,7 +153,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Street address:
+                                            {t("streetAddressLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -164,7 +165,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            City:
+                                            {t("cityLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -176,7 +177,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Province or territory:
+                                            {t("provinceTerritoryLabel")}
                                         </label>
                                         <select
                                             name="provinceTerritory"
@@ -188,7 +189,7 @@ export default function RegisterShop() {
                                                 value=""
                                                 className="bg-gray-800"
                                             >
-                                                Make a selection
+                                                {t("makeASelection")}
                                             </option>
                                             <option
                                                 value="AB"
@@ -272,7 +273,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Postal code:
+                                            {t("postalCodeLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -284,7 +285,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Phone number:
+                                            {t("phoneNumberLabel")}
                                         </label>
                                         <input
                                             type="tel"
@@ -296,7 +297,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Contact email:
+                                            {t("contactEmailLabel")}
                                         </label>
                                         <input
                                             type="email"
@@ -308,7 +309,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            E-transfer payment email:
+                                            {t("etransferEmailLabel")}
                                         </label>
                                         <input
                                             type="email"
@@ -320,7 +321,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Owner's name:
+                                            {t("ownerNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -332,7 +333,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Main contact name:
+                                            {t("mainContactNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -344,8 +345,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Who is your Bestbuy Distributor
-                                            parts supplier?
+                                            {t("bestbuyDistributorLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -357,7 +357,7 @@ export default function RegisterShop() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Enter your door rate:
+                                            {t("doorRateLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -373,11 +373,11 @@ export default function RegisterShop() {
                             {/* Acknowledgement */}
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">
-                                    Acknowledgement
+                                    {t("acknowledgementsTitle")}
                                 </h2>
                                 <div>
                                     <p className="text-white font-medium mb-4">
-                                        I understand that:
+                                        {t("iUnderstandThat")}
                                     </p>
                                     <label className="flex items-start space-x-3">
                                         <input
@@ -388,9 +388,7 @@ export default function RegisterShop() {
                                             className="mt-1 w-4 h-4 rounded border-white/20 bg-white/10 text-purple-600 focus:ring-purple-500 focus:ring-2"
                                         />
                                         <span className="text-white/90">
-                                            By submitting this form, I have read
-                                            the program outline and agree to its
-                                            outline presentation and terms.
+                                            {t("registerAcknowledgement")}
                                         </span>
                                     </label>
                                 </div>
@@ -402,7 +400,7 @@ export default function RegisterShop() {
                                     type="submit"
                                     className="bg-white/20 text-white hover:bg-white/30 hover:text-white border border-white/10 px-8 py-5 rounded-xl font-medium text-lg backdrop-blur-sm transition-colors duration-200"
                                 >
-                                    Review My Registration
+                                    {t("reviewMyRegistration")}
                                 </Button>
                             </div>
                         </form>

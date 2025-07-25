@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const { t } = useLanguage();
 
     useEffect(() => {
         const controlNavbar = () => {
@@ -31,7 +33,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-4xl transition-all duration-300 ${
+            className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-40 w-11/12 max-w-4xl transition-all duration-300 ${
                 isVisible
                     ? "translate-y-0 opacity-100"
                     : "-translate-y-full opacity-0"
@@ -55,19 +57,19 @@ export default function Navbar() {
                                 href="/submit-claim"
                                 className="text-white/90 hover:text-white transition-colors duration-200 font-light"
                             >
-                                Submit a Claim
+                                {t("submitClaim")}
                             </a>
                             <a
                                 href="/register-shop"
                                 className="text-white/90 hover:text-white transition-colors duration-200 font-light"
                             >
-                                Register My Shop
+                                {t("registerShop")}
                             </a>
                             <Button
                                 size="sm"
                                 className="bg-white/20 text-white hover:bg-white/30 border-white/20 px-6 py-2 rounded-xl font-medium"
                             >
-                                Login
+                                {t("login")}
                             </Button>
                         </div>
                     </div>

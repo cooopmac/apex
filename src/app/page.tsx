@@ -1,17 +1,20 @@
 "use client";
 
-import Silk from "@/backgrounds/Silk/Silk";
-import { Button } from "@/components/ui/button";
-import { AnimatedShinyText } from "@/components/animated-shiny-text";
-import { Footer } from "@/components/footer";
-import { Feature } from "@/components/feature";
-import { FAQ } from "@/components/faq";
-import { Brochure } from "@/components/brochure";
-import { InfiniteSlider } from "@/components/infinite-slider";
-import { ProgressiveBlur } from "@/components/progressive-blur";
 import { motion } from "framer-motion";
 
+import Silk from "@/backgrounds/Silk/Silk";
+import { AnimatedShinyText } from "@/components/animated-shiny-text";
+import { Brochure } from "@/components/brochure";
+import { FAQ } from "@/components/faq";
+import { Feature } from "@/components/feature";
+import { Footer } from "@/components/footer";
+import { InfiniteSlider } from "@/components/infinite-slider";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export default function Home() {
+    const { t } = useLanguage();
+
     return (
         <div className="min-h-screen relative overflow-hidden">
             {/* Silk Background */}
@@ -42,7 +45,7 @@ export default function Home() {
                             className="text-sm font-light text-white/90 max-w-none mx-0 bg-gradient-to-r from-transparent via-white/80 via-50% to-transparent"
                             shimmerWidth={60}
                         >
-                            Introducing Labour Recovery Programs
+                            {t("announcementBar")}
                         </AnimatedShinyText>
                         <svg
                             className="w-4 h-4 text-white/60"
@@ -70,8 +73,10 @@ export default function Home() {
                         }}
                     >
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white mb-8 leading-tight tracking-tight">
-                            We Cover Your{" "}
-                            <span className="block">Warranty Labour Costs</span>
+                            {t("heroTitle")}{" "}
+                            <span className="block">
+                                {t("heroTitleSecondLine")}
+                            </span>
                         </h1>
                     </motion.div>
 
@@ -86,9 +91,7 @@ export default function Home() {
                         }}
                     >
                         <p className="text-lg sm:text-xl md:text-2xl font-light text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto">
-                            Enhance your shop's efficiency with our Labour
-                            Recovery Program. We cover labour costs for warranty
-                            repairs up to 24 months or 40,000 km.
+                            {t("heroSubtitle")}
                         </p>
                     </motion.div>
 
@@ -109,7 +112,7 @@ export default function Home() {
                                 (window.location.href = "/register-shop")
                             }
                         >
-                            Join the Program
+                            {t("joinProgram")}
                         </Button>
                         <Button
                             variant="ghost"
@@ -118,7 +121,7 @@ export default function Home() {
                                 (window.location.href = "/submit-claim")
                             }
                         >
-                            Submit a Claim
+                            {t("submitClaimButton")}
                         </Button>
                     </motion.div>
                 </div>
@@ -146,7 +149,7 @@ export default function Home() {
                     className="text-center mb-4"
                 >
                     <p className="text-white/50 text-sm font-medium uppercase tracking-wider">
-                        Powering the best automotive shops
+                        {t("sliderTitle")}
                     </p>
                 </motion.div>
                 <motion.div
@@ -162,42 +165,42 @@ export default function Home() {
                     <InfiniteSlider speedOnHover={0} speed={50} gap={112}>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ 24 Month Coverage Period
+                                {t("benefits.coverage")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ Up to $130 Labour Rate
+                                {t("benefits.labourRate")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ Quick 3-5 Day Processing
+                                {t("benefits.processing")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ E-Transfer Payments
+                                {t("benefits.payments")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ Designed for 10 Bays or Fewer
+                                {t("benefits.baySize")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ Labour Recovery Program
+                                {t("benefits.program")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ Commercial Vehicle Coverage
+                                {t("benefits.commercial")}
                             </div>
                         </div>
                         <div className="flex">
                             <div className="text-white/70 text-lg font-medium whitespace-nowrap mx-auto">
-                                ✓ Warranty Repair Protection
+                                {t("benefits.warranty")}
                             </div>
                         </div>
                     </InfiniteSlider>

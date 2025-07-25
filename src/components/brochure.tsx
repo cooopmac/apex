@@ -1,8 +1,12 @@
+"use client";
+
 import { FileText, Download } from "lucide-react";
 import { AnimatedShinyText } from "@/components/animated-shiny-text";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function Brochure() {
+    const { t } = useLanguage();
     return (
         <div className="w-full py-16 lg:py-24">
             <div className="container mx-auto px-6">
@@ -14,7 +18,7 @@ function Brochure() {
                                 className="text-sm font-light text-white/90 max-w-none mx-0 bg-gradient-to-r from-transparent via-white/80 via-50% to-transparent"
                                 shimmerWidth={60}
                             >
-                                Important Information
+                                {t("brochureLabel")}
                             </AnimatedShinyText>
                             <svg
                                 className="w-4 h-4 text-white/60"
@@ -34,14 +38,12 @@ function Brochure() {
 
                     {/* Title */}
                     <h2 className="text-3xl md:text-4xl font-light text-white mb-4 leading-tight">
-                        Program Brochure & Terms
+                        {t("brochureTitle")}
                     </h2>
 
                     {/* Description */}
                     <p className="text-lg text-white/70 mb-8 leading-relaxed">
-                        Review our comprehensive program brochure containing
-                        detailed terms, conditions, and coverage information for
-                        the Labour Recovery Program.
+                        {t("brochureDescription")}
                     </p>
 
                     {/* CTA Button */}
@@ -54,16 +56,13 @@ function Brochure() {
                         }}
                     >
                         <FileText className="w-5 h-5" />
-                        View Program Brochure
+                        {t("brochureButton")}
                         <Download className="w-4 h-4" />
                     </Button>
 
                     {/* Legal Notice */}
                     <p className="text-sm text-white/50 mt-6 max-w-2xl mx-auto text-center">
-                        By participating in the Labour Recovery Program, you
-                        agree to the terms and conditions outlined in the
-                        program brochure. Please review all documentation
-                        carefully.
+                        {t("brochureLegal")}
                     </p>
                 </div>
             </div>

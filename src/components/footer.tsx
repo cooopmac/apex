@@ -4,11 +4,11 @@ import type { ComponentProps, ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
     FacebookIcon,
-    FrameIcon,
     InstagramIcon,
     LinkedinIcon,
     YoutubeIcon,
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FooterLink {
     title: string;
@@ -21,56 +21,77 @@ interface FooterSection {
     links: FooterLink[];
 }
 
-const footerLinks: FooterSection[] = [
-    {
-        label: "Program",
-        links: [
-            { title: "Join the Program", href: "/register-shop" },
-            { title: "Submit a Claim", href: "/submit-claim" },
-            { title: "Program Features", href: "#features" },
-            { title: "Coverage Details", href: "#coverage" },
-        ],
-    },
-    {
-        label: "Support",
-        links: [
-            { title: "FAQs", href: "#faq" },
-            { title: "Contact Riley", href: "tel:647-914-1222" },
-            { title: "Questions & Answers", href: "#faq" },
-            { title: "Help Center", href: "#faq" },
-        ],
-    },
-    {
-        label: "Legal",
-        links: [
-            { title: "Program Brochure", href: "/brochure.pdf" },
-            { title: "Terms & Conditions", href: "/brochure.pdf" },
-            { title: "Privacy Policy", href: "/brochure.pdf" },
-            { title: "Coverage Policy", href: "/brochure.pdf" },
-        ],
-    },
-    {
-        label: "Connect",
-        links: [
-            { title: "Facebook", href: "#", icon: FacebookIcon },
-            { title: "Instagram", href: "#", icon: InstagramIcon },
-            { title: "LinkedIn", href: "#", icon: LinkedinIcon },
-            { title: "YouTube", href: "#", icon: YoutubeIcon },
-        ],
-    },
-];
-
 export function Footer() {
+    const { t } = useLanguage();
+
+    const footerLinks: FooterSection[] = [
+        {
+            label: t("footerProgram"),
+            links: [
+                { title: t("footerProgramJoin"), href: "/register-shop" },
+                { title: t("footerProgramSubmit"), href: "/submit-claim" },
+                { title: t("footerProgramFeatures"), href: "#features" },
+                { title: t("footerProgramCoverage"), href: "#coverage" },
+            ],
+        },
+        {
+            label: t("footerSupport"),
+            links: [
+                { title: t("footerSupportFAQ"), href: "#faq" },
+                { title: t("footerSupportContact"), href: "tel:647-914-1222" },
+                { title: t("footerSupportQuestions"), href: "#faq" },
+                { title: t("footerSupportHelp"), href: "#faq" },
+            ],
+        },
+        {
+            label: t("footerLegal"),
+            links: [
+                { title: t("footerLegalBrochure"), href: "/brochure.pdf" },
+                { title: t("footerLegalTerms"), href: "/brochure.pdf" },
+                { title: t("footerLegalPrivacy"), href: "/brochure.pdf" },
+                { title: t("footerLegalCoverage"), href: "/brochure.pdf" },
+            ],
+        },
+        {
+            label: t("footerConnect"),
+            links: [
+                {
+                    title: t("footerConnectFacebook"),
+                    href: "#",
+                    icon: FacebookIcon,
+                },
+                {
+                    title: t("footerConnectInstagram"),
+                    href: "#",
+                    icon: InstagramIcon,
+                },
+                {
+                    title: t("footerConnectLinkedIn"),
+                    href: "#",
+                    icon: LinkedinIcon,
+                },
+                {
+                    title: t("footerConnectYouTube"),
+                    href: "#",
+                    icon: YoutubeIcon,
+                },
+            ],
+        },
+    ];
     return (
         <footer className="relative w-full bg-black/20 backdrop-blur-md border-t border-white/10 px-6 py-12 lg:py-16">
             <div className="bg-white/10 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
             <div className="max-w-6xl mx-auto grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
                 <AnimatedContainer className="space-y-4">
-                    <h1 className="text-white text-2xl font-bold">ApexLRP</h1>
+                    <h1 className="text-white text-2xl font-bold">
+                        {t("companyName")}
+                    </h1>
                     <p className="text-white/70 mt-8 text-sm md:mt-0">
-                        © {new Date().getFullYear()} ApexLRP. All rights
-                        reserved.
+                        {t("footerCopyright").replace(
+                            "2024",
+                            new Date().getFullYear().toString()
+                        )}
                     </p>
                 </AnimatedContainer>
 

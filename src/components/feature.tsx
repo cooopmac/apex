@@ -1,7 +1,11 @@
+"use client";
+
 import { Shield, Clock, FileCheck, TrendingUp } from "lucide-react";
 import { AnimatedShinyText } from "@/components/animated-shiny-text";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function Feature() {
+    const { t } = useLanguage();
     return (
         <div id="features" className="w-full pt-2 pb-20 lg:pt-8 lg:pb-40">
             <div className="container mx-auto px-6">
@@ -13,7 +17,7 @@ function Feature() {
                                     className="text-sm font-light text-white/90 max-w-none mx-0 bg-gradient-to-r from-transparent via-white/80 via-50% to-transparent"
                                     shimmerWidth={60}
                                 >
-                                    Labour Recovery Program
+                                    {t("featuresLabel")}
                                 </AnimatedShinyText>
                                 <svg
                                     className="w-4 h-4 text-white/60"
@@ -32,12 +36,10 @@ function Feature() {
                         </div>
                         <div className="flex gap-2 flex-col">
                             <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left text-white">
-                                Why Choose Our Labour Recovery Program?
+                                {t("featuresTitle")}
                             </h2>
                             <p className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-white/70 text-left">
-                                Enhance your shop's efficiency and reduce
-                                warranty repair costs with comprehensive labour
-                                coverage.
+                                {t("featuresSubtitle")}
                             </p>
                         </div>
                     </div>
@@ -46,12 +48,10 @@ function Feature() {
                             <Shield className="w-8 h-8 stroke-1 text-white" />
                             <div className="flex flex-col">
                                 <h3 className="text-xl tracking-tight text-white">
-                                    Complete Labour Cost Coverage
+                                    {t("feature1Title")}
                                 </h3>
                                 <p className="text-white/70 max-w-xs text-base">
-                                    We cover all labour costs for warranty
-                                    repairs when customers return to your shop
-                                    for issues related to your original work.
+                                    {t("feature1Description")}
                                 </p>
                             </div>
                         </div>
@@ -59,12 +59,10 @@ function Feature() {
                             <Clock className="w-8 h-8 stroke-1 text-white" />
                             <div className="flex flex-col">
                                 <h3 className="text-xl tracking-tight text-white">
-                                    Extended Coverage Period
+                                    {t("feature2Title")}
                                 </h3>
                                 <p className="text-white/70 max-w-xs text-base">
-                                    Coverage up to 24 months or 40,000 km for
-                                    most vehicles, 12 months or 10,000 km for
-                                    commercial vehicles.
+                                    {t("feature2Description")}
                                 </p>
                             </div>
                         </div>
@@ -73,12 +71,10 @@ function Feature() {
                             <FileCheck className="w-8 h-8 stroke-1 text-white" />
                             <div className="flex flex-col">
                                 <h3 className="text-xl tracking-tight text-white">
-                                    Simple Claims Process
+                                    {t("feature3Title")}
                                 </h3>
                                 <p className="text-white/70 max-w-xs text-base">
-                                    Submit claims within 4 months of repair.
-                                    Quick approval process with settlements
-                                    requiring your approval.
+                                    {t("feature3Description")}
                                 </p>
                             </div>
                         </div>
@@ -86,12 +82,10 @@ function Feature() {
                             <TrendingUp className="w-8 h-8 stroke-1 text-white" />
                             <div className="flex flex-col">
                                 <h3 className="text-xl tracking-tight text-white">
-                                    Enhanced Shop Efficiency
+                                    {t("feature4Title")}
                                 </h3>
                                 <p className="text-white/70 max-w-xs text-base">
-                                    Reduce financial burden from warranty
-                                    repairs and improve customer satisfaction
-                                    while maintaining your reputation.
+                                    {t("feature4Description")}
                                 </p>
                             </div>
                         </div>

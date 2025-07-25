@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Footer } from "@/components/footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function SubmitClaim() {
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({
         businessName: "",
         phoneNumber: "",
@@ -184,20 +186,20 @@ export default function SubmitClaim() {
                         {/* Page Title */}
                         <div className="text-left mb-8">
                             <h1 className="text-6xl font-bold text-white mb-2">
-                                Submit a Claim
+                                {t("submitClaimTitle")}
                             </h1>
                             <p className="text-white/80 text-lg">
-                                Complete the form below to submit your warranty
-                                repair claim
+                                {t("submitClaimSubtitle")}
                             </p>
                         </div>
 
                         {/* Note */}
                         <div className="mb-8 p-4 bg-white/5 rounded-lg border border-white/10">
                             <p className="text-white/90 text-sm">
-                                <strong>NOTE:</strong> Please submit only one
-                                claim at a time. Once that claim is processed,
-                                you may submit the next one.
+                                <strong>
+                                    {t("submitClaimNote").split(":")[0]}:
+                                </strong>{" "}
+                                {t("submitClaimNote").split(":")[1]}
                             </p>
                         </div>
 
@@ -205,12 +207,12 @@ export default function SubmitClaim() {
                             {/* Shop Details */}
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">
-                                    Shop Details
+                                    {t("shopDetailsTitle")}
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Business name:
+                                            {t("businessNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -222,7 +224,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Phone number:
+                                            {t("phoneNumberLabel")}
                                         </label>
                                         <input
                                             type="tel"
@@ -234,7 +236,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Postal code:
+                                            {t("postalCodeLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -246,7 +248,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Submitter name:
+                                            {t("submitterNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -258,7 +260,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div className="md:col-span-2">
                                         <label className="block text-white font-medium mb-2">
-                                            Submitter email address:
+                                            {t("submitterEmailLabel")}
                                         </label>
                                         <input
                                             type="email"
@@ -274,12 +276,12 @@ export default function SubmitClaim() {
                             {/* Customer & Warranty Repair Details */}
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">
-                                    Customer & Warranty Repair Details
+                                    {t("customerDetailsTitle")}
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            First name:
+                                            {t("firstNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -291,7 +293,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Last name:
+                                            {t("lastNameLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -303,7 +305,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Vehicle year:
+                                            {t("vehicleYearLabel")}
                                         </label>
                                         <select
                                             name="vehicleYear"
@@ -315,7 +317,7 @@ export default function SubmitClaim() {
                                                 value=""
                                                 className="bg-gray-800"
                                             >
-                                                Select year
+                                                {t("selectYear")}
                                             </option>
                                             {Array.from(
                                                 { length: 30 },
@@ -338,7 +340,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Vehicle make:
+                                            {t("vehicleMakeLabel")}
                                         </label>
                                         <select
                                             name="vehicleMake"
@@ -350,7 +352,7 @@ export default function SubmitClaim() {
                                                 value=""
                                                 className="bg-gray-800"
                                             >
-                                                Select make
+                                                {t("selectMake")}
                                             </option>
                                             <option
                                                 value="toyota"
@@ -416,7 +418,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Vehicle model:
+                                            {t("vehicleModelLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -428,7 +430,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Vehicle Identification Number (VIN):
+                                            {t("vinLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -440,7 +442,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Original repair mileage:
+                                            {t("originalMileageLabel")}
                                         </label>
                                         <div className="flex">
                                             <input
@@ -457,7 +459,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Warranty repair mileage:
+                                            {t("warrantyMileageLabel")}
                                         </label>
                                         <div className="flex">
                                             <input
@@ -474,7 +476,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            License plate number:
+                                            {t("licensePlateLabel")}
                                         </label>
                                         <input
                                             type="text"
@@ -486,7 +488,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Drivetrain:
+                                            {t("drivetrainLabel")}
                                         </label>
                                         <select
                                             name="drivetrain"
@@ -498,38 +500,37 @@ export default function SubmitClaim() {
                                                 value=""
                                                 className="bg-gray-800"
                                             >
-                                                Select drivetrain
+                                                {t("selectDrivetrain")}
                                             </option>
                                             <option
                                                 value="fwd"
                                                 className="bg-gray-800"
                                             >
-                                                Front-Wheel Drive (FWD)
+                                                {t("fwd")}
                                             </option>
                                             <option
                                                 value="rwd"
                                                 className="bg-gray-800"
                                             >
-                                                Rear-Wheel Drive (RWD)
+                                                {t("rwd")}
                                             </option>
                                             <option
                                                 value="awd"
                                                 className="bg-gray-800"
                                             >
-                                                All-Wheel Drive (AWD)
+                                                {t("awd")}
                                             </option>
                                             <option
                                                 value="4wd"
                                                 className="bg-gray-800"
                                             >
-                                                Four-Wheel Drive (4WD)
+                                                {t("fourwd")}
                                             </option>
                                         </select>
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Brief description if a defective
-                                            repair was required:
+                                            {t("defectiveDescriptionLabel")}
                                         </label>
                                         <textarea
                                             name="defectiveDescription"
@@ -543,7 +544,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Defective warranty repair:
+                                            {t("defectiveWarrantyRepairLabel")}
                                         </label>
                                         <textarea
                                             name="defectiveWarrantyRepair"
@@ -557,8 +558,7 @@ export default function SubmitClaim() {
                                     </div>
                                     <div className="md:col-span-2">
                                         <label className="block text-white font-medium mb-2">
-                                            Indicate the number of parts
-                                            replaced for warranty repair:
+                                            {t("partsReplacedLabel")}
                                         </label>
                                         <select
                                             name="partsReplaced"
@@ -570,7 +570,7 @@ export default function SubmitClaim() {
                                                 value=""
                                                 className="bg-gray-800"
                                             >
-                                                Select number of parts
+                                                {t("selectNumberOfParts")}
                                             </option>
                                             {Array.from(
                                                 { length: 10 },
@@ -598,12 +598,12 @@ export default function SubmitClaim() {
                             {/* File Attachments */}
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">
-                                    File Attachments
+                                    {t("fileAttachmentsTitle")}
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Original repair invoice:
+                                            {t("originalRepairInvoiceLabel")}
                                         </label>
                                         <div className="flex">
                                             <input
@@ -611,9 +611,10 @@ export default function SubmitClaim() {
                                                 value={
                                                     uploadedFiles
                                                         .originalRepairInvoice
-                                                        ?.name || "Choose file"
+                                                        ?.name ||
+                                                    t("chooseFile")
                                                 }
-                                                placeholder="Choose file"
+                                                placeholder={t("chooseFile")}
                                                 className="flex-1 px-4 py-3 rounded-l-xl bg-white/10 border border-white/20 border-r-0 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent backdrop-blur-sm"
                                                 readOnly
                                             />
@@ -639,19 +640,20 @@ export default function SubmitClaim() {
                                                 }
                                                 className="px-6 py-3 rounded-r-xl bg-white/20 hover:bg-white/30 border border-white/20 border-l-0 text-white backdrop-blur-sm transition-colors duration-200"
                                             >
-                                                Browse
+                                                {t("browse")}
                                             </button>
                                         </div>
                                         <p className="text-white/60 text-xs mt-1">
-                                            {uploadedFiles.originalRepairInvoice
-                                                ? "1"
-                                                : "0"}
-                                            /1 files uploaded
+                                            {t("filesUploaded", {
+                                                count: uploadedFiles.originalRepairInvoice
+                                                    ? 1
+                                                    : 0,
+                                            })}
                                         </p>
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Original part invoice:
+                                            {t("originalPartInvoiceLabel")}
                                         </label>
                                         <div className="flex">
                                             <input
@@ -659,9 +661,10 @@ export default function SubmitClaim() {
                                                 value={
                                                     uploadedFiles
                                                         .originalPartInvoice
-                                                        ?.name || "Choose file"
+                                                        ?.name ||
+                                                    t("chooseFile")
                                                 }
-                                                placeholder="Choose file"
+                                                placeholder={t("chooseFile")}
                                                 className="flex-1 px-4 py-3 rounded-l-xl bg-white/10 border border-white/20 border-r-0 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent backdrop-blur-sm"
                                                 readOnly
                                             />
@@ -687,19 +690,20 @@ export default function SubmitClaim() {
                                                 }
                                                 className="px-6 py-3 rounded-r-xl bg-white/20 hover:bg-white/30 border border-white/20 border-l-0 text-white backdrop-blur-sm transition-colors duration-200"
                                             >
-                                                Browse
+                                                {t("browse")}
                                             </button>
                                         </div>
                                         <p className="text-white/60 text-xs mt-1">
-                                            {uploadedFiles.originalPartInvoice
-                                                ? "1"
-                                                : "0"}
-                                            /1 files uploaded
+                                            {t("filesUploaded", {
+                                                count: uploadedFiles.originalPartInvoice
+                                                    ? 1
+                                                    : 0,
+                                            })}
                                         </p>
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Warranty repair invoice:
+                                            {t("warrantyRepairInvoiceLabel")}
                                         </label>
                                         <div className="flex">
                                             <input
@@ -707,9 +711,10 @@ export default function SubmitClaim() {
                                                 value={
                                                     uploadedFiles
                                                         .warrantyRepairInvoice
-                                                        ?.name || "Choose file"
+                                                        ?.name ||
+                                                    t("chooseFile")
                                                 }
-                                                placeholder="Choose file"
+                                                placeholder={t("chooseFile")}
                                                 className="flex-1 px-4 py-3 rounded-l-xl bg-white/10 border border-white/20 border-r-0 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent backdrop-blur-sm"
                                                 readOnly
                                             />
@@ -735,19 +740,20 @@ export default function SubmitClaim() {
                                                 }
                                                 className="px-6 py-3 rounded-r-xl bg-white/20 hover:bg-white/30 border border-white/20 border-l-0 text-white backdrop-blur-sm transition-colors duration-200"
                                             >
-                                                Browse
+                                                {t("browse")}
                                             </button>
                                         </div>
                                         <p className="text-white/60 text-xs mt-1">
-                                            {uploadedFiles.warrantyRepairInvoice
-                                                ? "1"
-                                                : "0"}
-                                            /1 files uploaded
+                                            {t("filesUploaded", {
+                                                count: uploadedFiles.warrantyRepairInvoice
+                                                    ? 1
+                                                    : 0,
+                                            })}
                                         </p>
                                     </div>
                                     <div>
                                         <label className="block text-white font-medium mb-2">
-                                            Replacement part invoice:
+                                            {t("replacementPartInvoiceLabel")}
                                         </label>
                                         <div className="flex">
                                             <input
@@ -755,9 +761,10 @@ export default function SubmitClaim() {
                                                 value={
                                                     uploadedFiles
                                                         .replacementPartInvoice
-                                                        ?.name || "Choose file"
+                                                        ?.name ||
+                                                    t("chooseFile")
                                                 }
-                                                placeholder="Choose file"
+                                                placeholder={t("chooseFile")}
                                                 className="flex-1 px-4 py-3 rounded-l-xl bg-white/10 border border-white/20 border-r-0 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent backdrop-blur-sm"
                                                 readOnly
                                             />
@@ -783,14 +790,15 @@ export default function SubmitClaim() {
                                                 }
                                                 className="px-6 py-3 rounded-r-xl bg-white/20 hover:bg-white/30 border border-white/20 border-l-0 text-white backdrop-blur-sm transition-colors duration-200"
                                             >
-                                                Browse
+                                                {t("browse")}
                                             </button>
                                         </div>
                                         <p className="text-white/60 text-xs mt-1">
-                                            {uploadedFiles.replacementPartInvoice
-                                                ? "1"
-                                                : "0"}
-                                            /1 files uploaded
+                                            {t("filesUploaded", {
+                                                count: uploadedFiles.replacementPartInvoice
+                                                    ? 1
+                                                    : 0,
+                                            })}
                                         </p>
                                     </div>
                                 </div>
@@ -799,12 +807,12 @@ export default function SubmitClaim() {
                             {/* Acknowledgements */}
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-6">
-                                    Acknowledgements
+                                    {t("acknowledgementsTitle")}
                                 </h2>
                                 <div className="space-y-4">
                                     <div>
                                         <p className="text-white font-medium mb-2">
-                                            I understand that:
+                                            {t("iUnderstandThat")}
                                         </p>
                                         <label className="flex items-start space-x-3">
                                             <input
@@ -817,18 +825,13 @@ export default function SubmitClaim() {
                                                 className="mt-1 w-4 h-4 rounded border-white/20 bg-white/10 text-purple-600 focus:ring-purple-500 focus:ring-2"
                                             />
                                             <span className="text-white/90">
-                                                Upon receiving a claim,
-                                                SolutionsLRP will take 5
-                                                business days to review all
-                                                necessary information and obtain
-                                                approval from the shop for the
-                                                claim.
+                                                {t("acknowledgement1")}
                                             </span>
                                         </label>
                                     </div>
                                     <div>
                                         <p className="text-white font-medium mb-2">
-                                            I understand that:
+                                            {t("iUnderstandThat")}
                                         </p>
                                         <label className="flex items-start space-x-3">
                                             <input
@@ -841,17 +844,13 @@ export default function SubmitClaim() {
                                                 className="mt-1 w-4 h-4 rounded border-white/20 bg-white/10 text-purple-600 focus:ring-purple-500 focus:ring-2"
                                             />
                                             <span className="text-white/90">
-                                                After approval, the claim will
-                                                be paid out within 2 business
-                                                days via e-transfer to the email
-                                                address on file for approved
-                                                e-transfer payment.
+                                                {t("acknowledgement2")}
                                             </span>
                                         </label>
                                     </div>
                                     <div>
                                         <p className="text-white font-medium mb-2">
-                                            I understand that:
+                                            {t("iUnderstandThat")}
                                         </p>
                                         <label className="flex items-start space-x-3">
                                             <input
@@ -864,14 +863,7 @@ export default function SubmitClaim() {
                                                 className="mt-1 w-4 h-4 rounded border-white/20 bg-white/10 text-purple-600 focus:ring-purple-500 focus:ring-2"
                                             />
                                             <span className="text-white/90">
-                                                All claims must be submitted
-                                                within 4 months of the warranty
-                                                repair invoice date for
-                                                approval. Claims submitted after
-                                                two months will be paid out at a
-                                                rate of $75.00. Claims submitted
-                                                after 4 months will not be
-                                                eligible for settlement.
+                                                {t("acknowledgement3")}
                                             </span>
                                         </label>
                                     </div>
@@ -884,7 +876,7 @@ export default function SubmitClaim() {
                                     type="submit"
                                     className="bg-white/20 text-white hover:bg-white/30 hover:text-white border border-white/10 px-8 py-5 rounded-xl font-medium text-lg backdrop-blur-sm transition-colors duration-200"
                                 >
-                                    Review My Claim
+                                    {t("reviewMyClaim")}
                                 </Button>
                             </div>
                         </form>
