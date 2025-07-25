@@ -25,7 +25,7 @@ export default function Home() {
                 />
             </div>
 
-            <div className="relative flex items-center justify-center min-h-[80vh] px-4 z-10">
+            <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh] pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-16 px-4 z-10">
                 <div className="text-center max-w-4xl mx-auto">
                     {/* Announcement Bar */}
                     <motion.div
@@ -69,7 +69,7 @@ export default function Home() {
                             ease: [0.25, 0.4, 0.25, 1],
                         }}
                     >
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-white mb-8 leading-tight tracking-tight">
                             We Cover Your{" "}
                             <span className="block">Warranty Labour Costs</span>
                         </h1>
@@ -85,7 +85,7 @@ export default function Home() {
                             ease: [0.25, 0.4, 0.25, 1],
                         }}
                     >
-                        <p className="text-xl md:text-2xl font-light text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto">
+                        <p className="text-lg sm:text-xl md:text-2xl font-light text-white/80 mb-12 leading-relaxed max-w-3xl mx-auto">
                             Enhance your shop's efficiency with our Labour
                             Recovery Program. We cover labour costs for warranty
                             repairs up to 24 months or 40,000 km.
@@ -133,7 +133,7 @@ export default function Home() {
                     delay: 1.3,
                     ease: [0.25, 0.4, 0.25, 1],
                 }}
-                className="w-full pt-0 pb-0"
+                className="w-full pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24"
             >
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
