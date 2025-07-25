@@ -47,16 +47,30 @@ export const translations = {
                 answer: "No, parts are not covered; that is the responsibility of the parts supplier, we cover the labour for the repair.",
             },
             {
-                question: "What's needed to process a Claim?",
-                answer: "Original repair invoice, A new warranty repair invoice, Invoice for parts purchased and installed during the original repair, Invoice for parts installed during the warranty repair",
-            },
-            {
                 question: "What is the deadline for claim submissions?",
                 answer: "Claims must be submitted within 30 days of the warranty repair completion date.",
             },
             {
-                question: "How long does it take to receive payment?",
-                answer: "Once your claim is approved and processed, you can expect to receive your e-transfer payment within 3-5 business days.",
+                question:
+                    "How do I make a claim and send the required information?",
+                answer: "To make a claim <a>click here</a>. You will need to fill out the online form and attach the four required documents.",
+            },
+            {
+                question: "How quickly are claims processed?",
+                answer: "Please expect three to five business days for processing of claims. Missing or incorrect information may result in delays.",
+            },
+            {
+                question: "How do I receive payment of my Labour Claim?",
+                answer: "Payments will be sent via e-Transfer within 2 business days after you approve the final claim settlement.",
+            },
+            {
+                question:
+                    "What should I do if I do not receive the e-Transfer?",
+                answer: "If you do not receive the e-Transfer, first check your spam folder. If it's not there, contact Riley 647-914-1222 for assistance.",
+            },
+            {
+                question: "Is ApexLRP suitable for shops of all sizes?",
+                answer: "Whether you run a small shop or a large repair facility, the labour recovery program will benefit you. It is designed for shops with 10 bays or fewer.",
             },
         ],
         contactSupport: "Any questions? Reach out",
@@ -237,17 +251,33 @@ export const translations = {
             },
             {
                 question:
-                    "Qu'est-ce qui est nécessaire pour traiter une réclamation?",
-                answer: "Facture de réparation originale, Une nouvelle facture de réparation de garantie, Facture pour les pièces achetées et installées lors de la réparation originale, Facture pour les pièces installées lors de la réparation de garantie",
-            },
-            {
-                question:
                     "Quelle est la date limite pour les soumissions de réclamations?",
                 answer: "Les réclamations doivent être soumises dans les 30 jours suivant la date d'achèvement de la réparation de garantie.",
             },
             {
-                question: "Combien de temps faut-il pour recevoir le paiement?",
-                answer: "Une fois votre réclamation approuvée et traitée, vous pouvez vous attendre à recevoir votre paiement par virement électronique dans les 3-5 jours ouvrables.",
+                question:
+                    "Comment puis-je faire une réclamation et envoyer les informations requises?",
+                answer: "Pour faire une réclamation, <a>cliquez ici</a>. Vous devrez remplir le formulaire en ligne et joindre les quatre documents requis.",
+            },
+            {
+                question:
+                    "Dans quel délai les réclamations sont-elles traitées?",
+                answer: "Veuillez prévoir de trois à cinq jours ouvrables pour le traitement des réclamations. Des informations manquantes ou incorrectes peuvent entraîner des retards.",
+            },
+            {
+                question:
+                    "Comment puis-je recevoir le paiement de ma réclamation de main-d'œuvre?",
+                answer: "Les paiements seront envoyés par virement électronique dans les 2 jours ouvrables suivant l'approbation du règlement final de la réclamation.",
+            },
+            {
+                question:
+                    "Que dois-je faire si je ne reçois pas le virement électronique?",
+                answer: "Si vous ne recevez pas le virement électronique, vérifiez d'abord votre dossier de courrier indésirable. S'il ne s'y trouve pas, contactez Pat au 647-574-1824 ou Riley au 647-914-1222 pour obtenir de l'aide.",
+            },
+            {
+                question:
+                    "SolutionsLRP convient-il aux ateliers de toutes tailles?",
+                answer: "Que vous dirigiez un petit atelier ou un grand centre de réparation, le programme de récupération de la main-d'œuvre vous sera bénéfique. Il est conçu pour les ateliers de 10 baies ou moins.",
             },
         ],
         contactSupport: "Des questions? Contactez-nous",

@@ -14,6 +14,24 @@ import { useLanguage } from "@/contexts/LanguageContext";
 function FAQ() {
     const { t } = useLanguage();
 
+    const renderAnswer = (answer: string) => {
+        const parts = answer.split(/<a>(.*?)<\/a>/g);
+        return parts.map((part, index) => {
+            if (index % 2 === 1) {
+                return (
+                    <a
+                        key={index}
+                        href="/submit-claim"
+                        className="text-blue-400 hover:underline"
+                    >
+                        {part}
+                    </a>
+                );
+            }
+            return part;
+        });
+    };
+
     return (
         <div id="faq" className="w-full pt-0 pb-20 lg:pt-0 lg:pb-40">
             <div className="container mx-auto px-6">
@@ -69,7 +87,7 @@ function FAQ() {
                                     {faq.question}
                                 </AccordionTrigger>
                                 <AccordionContent>
-                                    {faq.answer}
+                                    {renderAnswer(faq.answer)}
                                 </AccordionContent>
                             </AccordionItem>
                         ))}
