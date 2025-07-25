@@ -17,7 +17,7 @@ export default function Home() {
             {/* Silk Background */}
             <div className="fixed inset-0 -z-10">
                 <Silk
-                    color="#b81010"
+                    color="#2a7afa"
                     speed={5}
                     scale={1}
                     noiseIntensity={1.5}

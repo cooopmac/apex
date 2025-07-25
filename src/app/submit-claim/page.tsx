@@ -169,7 +169,7 @@ export default function SubmitClaim() {
             {/* Silk Background */}
             <div className="fixed inset-0 -z-10">
                 <Silk
-                    color="#a21010"
+                    color="#2a7afa"
                     speed={5}
                     scale={1}
                     noiseIntensity={1.2}
