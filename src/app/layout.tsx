@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/landing/language-toggle";
 import { ClerkProvider } from '@clerk/nextjs'
 import ConvexClientProvider from '@/components/convex-client-provider'
+import AppInit from "@/components/app-init";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ function RootLayoutContent({ children }: { children: React.ReactNode }) {
     return (
         <ClerkProvider>
             <ConvexClientProvider>
+                <AppInit />
                 <LanguageProvider>
                     {children}
                 </LanguageProvider>
