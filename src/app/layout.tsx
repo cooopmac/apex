@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { LanguageToggle } from "@/components/language-toggle";
+import { LanguageToggle } from "@/components/landing/language-toggle";
+import { ClerkProvider } from '@clerk/nextjs'
+import ConvexClientProvider from '@/components/convex-client-provider'
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -22,14 +23,13 @@ export const metadata: Metadata = {
 
 function RootLayoutContent({ children }: { children: React.ReactNode }) {
     return (
-        <LanguageProvider>
-            <Navbar />
-            {/* Language Toggle - Fixed in top right corner */}
-            <div className="fixed top-6 right-6 z-50">
-                <LanguageToggle />
-            </div>
-            {children}
-        </LanguageProvider>
+        <ClerkProvider>
+            <ConvexClientProvider>
+                <LanguageProvider>
+                    {children}
+                </LanguageProvider>
+            </ConvexClientProvider>
+        </ClerkProvider>
     );
 }
 

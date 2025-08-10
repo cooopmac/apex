@@ -1,7 +1,7 @@
 "use client";
 
 import { Shield, Clock, FileCheck, TrendingUp } from "lucide-react";
-import { AnimatedShinyText } from "@/components/animated-shiny-text";
+import { AnimatedShinyText } from "@/components/landing/animated-shiny-text";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function Feature() {

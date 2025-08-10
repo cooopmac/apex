@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 
-export default function Navbar() {
+export default function LandingNavbar() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const { t } = useLanguage();
@@ -55,6 +55,18 @@ export default function Navbar() {
 
                         {/* Navigation items and login */}
                         <div className="flex items-center space-x-8">
+                            <a
+                                href="/submit-claim"
+                                className="text-white/90 hover:text-white transition-colors duration-200 font-light"
+                            >
+                                {t("submitClaim")}
+                            </a>
+                            <a
+                                href="/register-shop"
+                                className="text-white/90 hover:text-white transition-colors duration-200 font-light"
+                            >
+                                {t("registerShop")}
+                            </a>
                             <Authenticated>
                                 <a
                                     href="/dashboard"

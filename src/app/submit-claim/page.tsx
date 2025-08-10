@@ -4,8 +4,10 @@ import Silk from "@/backgrounds/Silk/Silk";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/landing/footer";
 import { useLanguage } from "@/contexts/LanguageContext";
+import LandingNavbar from "@/components/landing/navbar";
+import { LanguageToggle } from "@/components/landing/language-toggle";
 
 export default function SubmitClaim() {
     const { t } = useLanguage();
@@ -168,6 +170,14 @@ export default function SubmitClaim() {
 
     return (
         <div className="min-h-screen relative">
+            {/* Navigation */}
+            <LandingNavbar />
+            
+            {/* Language Toggle - Fixed in top right corner */}
+            <div className="fixed top-6 right-6 z-50">
+                <LanguageToggle />
+            </div>
+            
             {/* Silk Background */}
             <div className="fixed inset-0 -z-10">
                 <Silk
