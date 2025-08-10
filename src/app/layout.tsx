@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { LanguageToggle } from "@/components/landing/language-toggle";
 import { ClerkProvider } from '@clerk/nextjs'
 import ConvexClientProvider from '@/components/convex-client-provider'
 import AppInit from "@/components/app-init";

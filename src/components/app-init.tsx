@@ -7,12 +7,12 @@ import { useAuth } from "@clerk/nextjs";
 
 export default function AppInit() {
   const { isLoaded, isSignedIn } = useAuth();
-  const ensureUserRecord = useMutation(api.users.ensureUserRecord);
+  const createUser = useMutation(api.users.createUser);
 
   useEffect(() => {
     if (!isLoaded || !isSignedIn) return; // Wait until Clerk is ready
-    ensureUserRecord();
-  }, [isLoaded, isSignedIn, ensureUserRecord]);
+    createUser();
+  }, [isLoaded, isSignedIn, createUser]);
 
   return null;
 }
