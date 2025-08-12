@@ -78,12 +78,7 @@ export default function UserSidebar({ children, className }: UserSidebarProps) {
                   </SidebarMenuItem>
 
                   <SidebarMenuItem>
-                    <SidebarMenuButton asChild tooltip="Register Shop">
-                      <Link href="/dashboard/register-shop">
-                        <Store />
-                        <span>Register Shop</span>
-                      </Link>
-                    </SidebarMenuButton>
+                    {/* Removed Register Shop */}
                   </SidebarMenuItem>
 
                   <SidebarMenuItem>

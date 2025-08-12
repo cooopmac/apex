@@ -41,3 +41,14 @@ export const getRole = query({
       return user?.role ?? null;
     },
   });
+
+export const getUserIdByClerkId = query({
+  args: { clerkId: v.string() },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
+      .unique();
+    return user?._id ?? null;
+  },
+});

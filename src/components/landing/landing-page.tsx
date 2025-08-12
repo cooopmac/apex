@@ -13,9 +13,11 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LandingNavbar from "@/components/landing/navbar";
 import { LanguageToggle } from "@/components/landing/language-toggle";
+import { useRouter } from "next/navigation";
 
 export function LandingPage() {
     const { t } = useLanguage();
+    const router = useRouter();
 
     return (
         <div className="min-h-screen relative overflow-hidden">
@@ -118,18 +120,14 @@ export function LandingPage() {
                     >
                         <Button
                             className="bg-white text-black hover:bg-white/90 font-medium px-8 py-6 rounded-xl text-lg transition-all duration-200 hover:scale-105"
-                            onClick={() =>
-                                (window.location.href = "/register-shop")
-                            }
+                            onClick={() => router.push("/register-shop")}
                         >
                             {t("joinProgram")}
                         </Button>
                         <Button
                             variant="ghost"
                             className="text-white border border-white/30 hover:bg-white/10 hover:text-white font-light px-8 py-6 rounded-xl text-lg transition-all duration-200 hover:scale-105"
-                            onClick={() =>
-                                (window.location.href = "/submit-claim")
-                            }
+                            onClick={() => router.push("/submit-claim")}
                         >
                             {t("submitClaimButton")}
                         </Button>

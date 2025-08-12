@@ -1,13 +1,29 @@
 "use client";
 
-import { Authenticated, Unauthenticated } from "convex/react";
+import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 import { useUser } from "@clerk/nextjs";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { api } from "@/../convex/_generated/api";
 
 export default function DashboardPage() {
+  const router = useRouter();
+  const role = useQuery(api.users.getRole);
+
+  useEffect(() => {
+    if (role === "admin") {
+      router.replace("/dashboard/admin");
+    }
+  }, [role, router]);
+
   return (
     <>
       <Authenticated>
-        <WelcomePanel />
+        {role === undefined ? (
+          <div className="p-6">Loading…</div>
+        ) : role === "admin" ? null : (
+          <WelcomePanel />
+        )}
       </Authenticated>
       <Unauthenticated>
         <AccessDenied />
