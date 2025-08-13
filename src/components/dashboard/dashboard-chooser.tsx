@@ -5,10 +5,9 @@ import UserDashboard from "@/components/dashboard/user-dashboard";
 interface DashboardProps {
   user: UserResource | null;
   role: "admin" | "user" | null;
-  messages?: any[];
 }
 
-export default function Dashboard({ user, role, messages = [] }: DashboardProps) {
+export default function Dashboard({ user, role }: DashboardProps) {
   if (!user || !role) {
     return <p className="p-8">Please log in to access your dashboard.</p>;
   }
@@ -18,7 +17,7 @@ export default function Dashboard({ user, role, messages = [] }: DashboardProps)
   }
 
   if (role === "user") {
-    return <UserDashboard user={user} messages={messages} />;
+    return <UserDashboard user={user} />;
   }
 
   return <p className="p-8">Role not recognized.</p>;

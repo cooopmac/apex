@@ -21,13 +21,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  ClipboardList,
-  Store,
-  Users,
-  Settings,
-} from "lucide-react";
+import { LayoutDashboard, ClipboardList, Store, Settings } from "lucide-react";
 
 type AdminSidebarProps = {
   children?: React.ReactNode;
@@ -78,6 +72,15 @@ export default function AdminSidebar({ children, className }: AdminSidebarProps)
                   </SidebarMenuItem>
 
                   <SidebarMenuItem>
+                    <SidebarMenuButton asChild tooltip="All Claims">
+                      <Link href="/dashboard/admin/claims/all">
+                        <ClipboardList />
+                        <span>All Claims</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+
+                  <SidebarMenuItem>
                     <SidebarMenuButton asChild tooltip="Registered Shops">
                       <Link href="/dashboard/admin/shops">
                         <Store />
@@ -86,14 +89,6 @@ export default function AdminSidebar({ children, className }: AdminSidebarProps)
                     </SidebarMenuButton>
                   </SidebarMenuItem>
 
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild tooltip="Users">
-                      <Link href="/dashboard/admin/users">
-                        <Users />
-                        <span>Users</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>

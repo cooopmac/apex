@@ -21,13 +21,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  ClipboardList,
-  Store,
-  Mail,
-  Settings,
-} from "lucide-react";
+import { LayoutDashboard, ClipboardList, User as UserIcon, FilePlus2, ListChecks } from "lucide-react";
 
 type UserSidebarProps = {
   children?: React.ReactNode;
@@ -69,23 +63,28 @@ export default function UserSidebar({ children, className }: UserSidebarProps) {
                   </SidebarMenuItem>
 
                   <SidebarMenuItem>
+                    <SidebarMenuButton asChild tooltip="Claims">
+                      <Link href="/dashboard/claims">
+                        <ListChecks />
+                        <span>Claims</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+
+                  <SidebarMenuItem>
                     <SidebarMenuButton asChild tooltip="Submit Claim">
                       <Link href="/dashboard/submit-claim">
-                        <ClipboardList />
+                        <FilePlus2 />
                         <span>Submit Claim</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
 
                   <SidebarMenuItem>
-                    {/* Removed Register Shop */}
-                  </SidebarMenuItem>
-
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild tooltip="Messages">
-                      <Link href="#">
-                        <Mail />
-                        <span>Messages</span>
+                    <SidebarMenuButton asChild tooltip="Profile">
+                      <Link href="/dashboard/profile">
+                        <UserIcon />
+                        <span>Profile</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -97,11 +96,7 @@ export default function UserSidebar({ children, className }: UserSidebarProps) {
           <SidebarSeparator />
 
           <SidebarFooter>
-            <div className="flex items-center justify-between gap-2 px-2">
-              <Link href="/settings" className="flex items-center gap-2 text-sm">
-                <Settings className="h-4 w-4" />
-                <span>Settings</span>
-              </Link>
+            <div className="flex items-center gap-2 px-2">
               <UserButton afterSignOutUrl="/" />
             </div>
           </SidebarFooter>

@@ -11,6 +11,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Building2, Mail, MapPin, User, DollarSign, Tag } from "lucide-react";
 
 export default function AdminShopsPage() {
   const [search, setSearch] = React.useState("");
@@ -73,66 +74,70 @@ function ShopsAdminView({ search }: { search: string }) {
       ) : filtered.length === 0 ? (
         <div className="text-muted-foreground">No shops found.</div>
       ) : (
-        <div className="rounded-xl border overflow-hidden">
-          <div className="grid grid-cols-12 bg-muted/40 text-sm font-medium py-2 px-3">
-            <div className="col-span-3">Shop</div>
-            <div className="col-span-2">Location</div>
-            <div className="col-span-2">Contacts</div>
-            <div className="col-span-3">Emails</div>
-            <div className="col-span-2 text-right">Door Rate</div>
-          </div>
-          <div className="divide-y">
-            {filtered.map((s) => (
-              <Sheet key={s._id}>
-                <SheetTrigger asChild>
-                  <div
-                    className="grid grid-cols-12 items-start py-3 px-3 hover:bg-accent/40 transition-colors cursor-pointer"
-                    onClick={() => setSelected(s)}
-                  >
-                    <div className="col-span-3">
-                      <div className="font-medium">{s.serviceFacilityName}</div>
-                      <div className="text-xs text-muted-foreground">{s.bestbuyDistributor}</div>
-                    </div>
-                    <div className="col-span-2 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {filtered.map((s) => (
+            <Sheet key={s._id}>
+              <SheetTrigger asChild>
+                <button
+                  className="text-left w-full rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow p-4"
+                  onClick={() => setSelected(s)}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center justify-center rounded-md bg-muted h-9 w-9">
+                        <Building2 className="h-5 w-5" />
+                      </span>
                       <div>
-                        {s.city}, {s.provinceTerritory}
+                        <div className="font-medium leading-tight">{s.serviceFacilityName}</div>
+                        <div className="text-xs text-muted-foreground">Owner: {s.ownerName}</div>
                       </div>
-                      <div className="text-muted-foreground text-xs">{s.streetAddress}</div>
-                      <div className="text-muted-foreground text-xs">{s.postalCode}</div>
                     </div>
-                    <div className="col-span-2 text-sm">
-                      <div>{s.ownerName}</div>
-                      <div className="text-muted-foreground text-xs">{s.mainContactName}</div>
-                    </div>
-                    <div className="col-span-3 text-sm">
-                      <div>{s.contactEmail}</div>
-                      <div className="text-muted-foreground text-xs">{s.etransferEmail}</div>
-                    </div>
-                    <div className="col-span-2 text-right">
-                      <div className="inline-flex items-center justify-end rounded-md border px-2 py-1 text-sm bg-secondary">
-                        {s.doorRate}
-                      </div>
-                      <div className="text-[11px] text-muted-foreground mt-1">Owner: {s.ownerEmail}</div>
+                    <div className="text-xs font-mono rounded border px-2 py-0.5 bg-muted">
+                      {s.accountNumber ?? "—"}
                     </div>
                   </div>
-                </SheetTrigger>
-                <SheetContent side="right" className="sm:max-w-xl">
-                  <SheetHeader>
-                    <SheetTitle>Edit shop</SheetTitle>
-                  </SheetHeader>
-                  {selected?._id === s._id && (
-                    <EditShopForm
-                      key={s._id}
-                      initial={s}
-                      onSave={async (data) => {
-                        await updateShop({ shopId: s._id, ...data });
-                      }}
-                    />
-                  )}
-                </SheetContent>
-              </Sheet>
-            ))}
-          </div>
+
+                  <div className="mt-3 flex flex-col gap-2 text-sm">
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <MapPin className="h-4 w-4" />
+                      <span>
+                        {s.city}, {s.provinceTerritory}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Mail className="h-4 w-4" />
+                      <span className="truncate">{s.contactEmail}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex items-center gap-2 text-xs">
+                    <span className="inline-flex items-center gap-1 rounded-md border px-2 py-1 bg-secondary">
+                      <DollarSign className="h-3 w-3" /> {s.doorRate}
+                    </span>
+                    {s.bestbuyDistributor && (
+                      <span className="inline-flex items-center gap-1 rounded-md border px-2 py-1">
+                        <Tag className="h-3 w-3" /> {s.bestbuyDistributor}
+                      </span>
+                    )}
+                  </div>
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="sm:max-w-xl">
+                <SheetHeader>
+                  <SheetTitle>Edit shop</SheetTitle>
+                </SheetHeader>
+                {selected?._id === s._id && (
+                  <EditShopForm
+                    key={s._id}
+                    initial={s}
+                    onSave={async (data) => {
+                      await updateShop({ shopId: s._id, ...data });
+                    }}
+                  />
+                )}
+              </SheetContent>
+            </Sheet>
+          ))}
         </div>
       )}
     </>

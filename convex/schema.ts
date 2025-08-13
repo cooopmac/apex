@@ -9,10 +9,6 @@ export default defineSchema({
     createdAt: v.string(),
   }).index("by_clerkId", ["clerkId"]),
 
-  messages: defineTable({
-    author: v.string(),
-    body: v.string(),
-  }),
 
   shops: defineTable({
     userId: v.id("users"),
@@ -29,7 +25,56 @@ export default defineSchema({
     bestbuyDistributor: v.string(),
     doorRate: v.string(),
     acknowledgement: v.boolean(),
+    // Admin-only reference for payouts
+    accountNumber: v.optional(v.string()),
     createdAt: v.string(),
     updatedAt: v.string(),
   }).index("by_userId", ["userId"]),
+
+  claims: defineTable({
+    userId: v.id("users"),
+    shopId: v.id("shops"),
+
+    // Personal components
+    businessName: v.string(),
+    phoneNumber: v.string(),
+    postalCode: v.string(),
+    submitterName: v.string(),
+    submitterEmail: v.string(),
+
+    // Claim components
+    customerFirstName: v.string(),
+    customerLastName: v.string(),
+    vehicleYear: v.string(),
+    vehicleMake: v.string(),
+    vehicleModel: v.string(),
+    vin: v.string(),
+    licensePlate: v.string(),
+    originalMileage: v.string(),
+    repairMileage: v.string(),
+    drivetrain: v.union(
+      v.literal("2WD"),
+      v.literal("4WD"),
+      v.literal("AWD")
+    ),
+    inBayDefect: v.boolean(),
+    defectReason: v.string(),
+    numberOfParts: v.number(),
+
+    // Attachments metadata only (files not stored yet)
+    attachments: v.array(
+      v.object({
+        label: v.string(),
+        fileName: v.string(),
+      })
+    ),
+
+    status: v.union(
+      v.literal("submitted"),
+      v.literal("review"),
+      v.literal("approved"),
+      v.literal("rejected")
+    ),
+    createdAt: v.string(),
+  }).index("by_userId", ["userId"]).index("by_shopId", ["shopId"]),
 });

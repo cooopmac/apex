@@ -53,17 +53,21 @@ export const upsertForCurrentUser = mutation({
       .withIndex("by_userId", (q) => q.eq("userId", user._id))
       .unique();
 
+    // Generate account number from province initials and last 3 chars of postal code
+    const accountNumber = generateAccountNumber(args.provinceTerritory, args.postalCode);
+
     if (!existing) {
       await ctx.db.insert("shops", {
         userId: user._id,
         ...args,
+        accountNumber,
         createdAt: now,
         updatedAt: now,
       });
       return { created: true };
     }
 
-    await ctx.db.patch(existing._id, { ...args, updatedAt: now });
+    await ctx.db.patch(existing._id, { ...args, accountNumber, updatedAt: now });
     return { created: false };
   },
 });
@@ -130,6 +134,8 @@ export const adminUpdate = mutation({
       throw new Error("Forbidden");
     }
 
+    const accountNumber = generateAccountNumber(args.provinceTerritory, args.postalCode);
+
     await ctx.db.patch(args.shopId, {
       serviceFacilityName: args.serviceFacilityName,
       streetAddress: args.streetAddress,
@@ -144,11 +150,35 @@ export const adminUpdate = mutation({
       bestbuyDistributor: args.bestbuyDistributor,
       doorRate: args.doorRate,
       acknowledgement: args.acknowledgement,
+      accountNumber,
       updatedAt: new Date().toISOString(),
     });
 
     return { ok: true };
   },
 });
+
+function generateAccountNumber(provinceTerritory: string, postalCode: string): string {
+  const province = String(provinceTerritory || "").replace(/[^A-Za-z]/g, "").toUpperCase();
+  // Map full names to abbreviations if needed (fallback: first 2 letters)
+  const map: Record<string, string> = {
+    ALBERTA: "AB",
+    BRITISHCOLUMBIA: "BC",
+    MANITOBA: "MB",
+    NEWBRUNSWICK: "NB",
+    NEWFOUNDLANDANDLABRADOR: "NL",
+    NOVASCOTIA: "NS",
+    NORTHWESTTERRITORIES: "NT",
+    NUNAVUT: "NU",
+    ONTARIO: "ON",
+    PRINCEEDWARDISLAND: "PE",
+    QUEBEC: "QC",
+    SASKATCHEWAN: "SK",
+    YUKON: "YT",
+  };
+  const prov = map[province] || province.slice(0, 2);
+  const lastThree = String(postalCode || "").replace(/\s+/g, "").slice(-3).toUpperCase();
+  return `${prov}${lastThree}`;
+}
 
 

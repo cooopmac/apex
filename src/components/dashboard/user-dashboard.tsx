@@ -3,10 +3,9 @@ import UserSidebar from "./ui/user-sidebar";
 
 interface UserDashboardProps {
   user: UserResource;
-  messages: any[];
 }
 
-export default function UserDashboard({ user, messages }: UserDashboardProps) {
+export default function UserDashboard({ user }: UserDashboardProps) {
   return (
     <UserSidebar>
     <div className="min-h-screen bg-gray-50 p-8">
