@@ -89,6 +89,15 @@ export default function AdminSidebar({ children, className }: AdminSidebarProps)
                     </SidebarMenuButton>
                   </SidebarMenuItem>
 
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild tooltip="Monthly Statements">
+                      <Link href="/dashboard/admin/statements">
+                        <Store />
+                        <span>Monthly Statements</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
