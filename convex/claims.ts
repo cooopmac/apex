@@ -64,10 +64,17 @@ export const submit = mutation({
       .unique();
     if (!shop) throw new Error("Shop not found for user");
 
+    // Validate VIN: exactly 17 characters, excluding I, O, Q
+    const normalizedVin = String(args.vin || "").trim().toUpperCase();
+    if (!/^[A-HJ-NPR-Z0-9]{17}$/.test(normalizedVin)) {
+      throw new Error("Invalid VIN: must be 17 characters (letters/numbers, no I/O/Q)");
+    }
+
     const claimId = await ctx.db.insert("claims", {
       userId: user._id,
       shopId: shop._id,
       ...args,
+      vin: normalizedVin,
       status: "submitted",
       createdAt: new Date().toISOString(),
     });

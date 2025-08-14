@@ -76,7 +76,7 @@ export const listAll = query({
   args: {},
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new Error("Not authenticated");
+    if (!identity) return [];
 
     const currentUser = await ctx.db
       .query("users")
@@ -84,7 +84,7 @@ export const listAll = query({
       .unique();
 
     if (!currentUser || currentUser.role !== "admin") {
-      throw new Error("Forbidden");
+      return [];
     }
 
     const shops = await ctx.db.query("shops").collect();

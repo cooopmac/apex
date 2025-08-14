@@ -61,10 +61,18 @@ export default function DashboardSubmitClaimPage() {
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (!shop) return; // still loading or missing shop
+    // Client-side VIN check for better UX
+    const vin = String(form.vin || "").trim().toUpperCase();
+    const isValidVin = /^[A-HJ-NPR-Z0-9]{17}$/.test(vin);
+    if (!isValidVin) {
+      alert("VIN must be exactly 17 characters (letters/numbers, no I/O/Q)");
+      return;
+    }
     setIsSubmitting(true);
     try {
       await submitClaim({
         ...form,
+        vin,
         drivetrain: mapDrivetrain(form.drivetrain),
         attachments,
       } as any);

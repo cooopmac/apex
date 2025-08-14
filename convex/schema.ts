@@ -78,20 +78,5 @@ export default defineSchema({
     createdAt: v.string(),
   }).index("by_userId", ["userId"]).index("by_shopId", ["shopId"]),
 
-  // Admin-only: Monthly Statements file storage
-  statementFiles: defineTable({
-    year: v.number(),
-    month: v.number(), // 1-12
-    name: v.string(),
-    storageId: v.id("_storage"),
-    createdAt: v.string(),
-  }).index("by_year_month", ["year", "month"]),
-
-  // Admin-only: Editable monthly sheet (simple grid of strings)
-  monthlySheets: defineTable({
-    year: v.number(),
-    month: v.number(), // 1-12
-    cells: v.array(v.array(v.string())),
-    updatedAt: v.string(),
-  }).index("by_year_month", ["year", "month"]),
+  
 });

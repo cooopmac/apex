@@ -21,7 +21,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, ClipboardList, Store, Settings } from "lucide-react";
+import { LayoutDashboard, ClipboardList, Store } from "lucide-react";
 
 type AdminSidebarProps = {
   children?: React.ReactNode;
@@ -89,14 +89,7 @@ export default function AdminSidebar({ children, className }: AdminSidebarProps)
                     </SidebarMenuButton>
                   </SidebarMenuItem>
 
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild tooltip="Monthly Statements">
-                      <Link href="/dashboard/admin/statements">
-                        <Store />
-                        <span>Monthly Statements</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
+                  
 
                 </SidebarMenu>
               </SidebarGroupContent>
@@ -106,11 +99,7 @@ export default function AdminSidebar({ children, className }: AdminSidebarProps)
           <SidebarSeparator />
 
           <SidebarFooter>
-            <div className="flex items-center justify-between gap-2 px-2">
-              <Link href="/settings" className="flex items-center gap-2 text-sm">
-                <Settings className="h-4 w-4" />
-                <span>Settings</span>
-              </Link>
+            <div className="flex items-center gap-2 px-2">
               <UserButton afterSignOutUrl="/" />
             </div>
           </SidebarFooter>
