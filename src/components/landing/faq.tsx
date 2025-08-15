@@ -80,13 +80,13 @@ function FAQ() {
                             </div>
                         </div>
                     </div>
-                    <Accordion type="single" collapsible className="w-full">
+                    <Accordion type="single" collapsible className="w-full text-white">
                         {t("faqs").map((faq: any, index: number) => (
                             <AccordionItem key={index} value={"index-" + index}>
-                                <AccordionTrigger>
+                                <AccordionTrigger className="text-white">
                                     {faq.question}
                                 </AccordionTrigger>
-                                <AccordionContent>
+                                <AccordionContent className="text-white/80">
                                     {renderAnswer(faq.answer)}
                                 </AccordionContent>
                             </AccordionItem>

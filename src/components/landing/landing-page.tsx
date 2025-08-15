@@ -40,7 +40,7 @@ export function LandingPage() {
                 />
             </div>
 
-            <div className="relative flex items-center justify-center min-h-[60vh] sm:min-h-[65vh] lg:min-h-[70vh] pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 lg:pb-10 px-4 z-10">
+            <div id="hero" className="relative flex items-center justify-center min-h-[60vh] sm:min-h-[65vh] lg:min-h-[70vh] pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-8 lg:pb-10 px-4 z-10">
                 <div className="text-center max-w-4xl mx-auto">
                     {/* Announcement Bar */}
                     <motion.div
@@ -222,7 +222,9 @@ export function LandingPage() {
             </div>
 
             {/* Brochure Section */}
-            <Brochure />
+            <div id="brochure">
+                <Brochure />
+            </div>
 
             {/* Footer */}
             <Footer />

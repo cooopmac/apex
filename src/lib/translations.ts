@@ -5,6 +5,11 @@ export const translations = {
         submitClaim: "Submit a Claim",
         registerShop: "Register My Shop",
         login: "Login",
+        // Navigation
+        Home: "Home",
+        Features: "Features",
+        FAQ: "FAQ",
+        Brochure: "Brochure",
 
         // Hero Section
         announcementBar: "Introducing Labour Recovery Programs",
@@ -206,6 +211,11 @@ export const translations = {
         submitClaim: "Soumettre une réclamation",
         registerShop: "Inscrire mon atelier",
         login: "Connexion",
+        // Navigation
+        Home: "Accueil",
+        Features: "Fonctionnalités",
+        FAQ: "FAQ",
+        Brochure: "Brochure",
 
         // Hero Section
         announcementBar:
