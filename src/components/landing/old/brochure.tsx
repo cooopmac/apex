@@ -1,7 +1,7 @@
 "use client";
 
 import { FileText, Download } from "lucide-react";
-import { AnimatedShinyText } from "@/components/landing/animated-shiny-text";
+import { AnimatedShinyText } from "@/components/landing/old/animated-shiny-text";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 

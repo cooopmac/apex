@@ -1,7 +1,7 @@
 "use client";
 
 import { PhoneCall } from "lucide-react";
-import { AnimatedShinyText } from "@/components/landing/animated-shiny-text";
+import { AnimatedShinyText } from "@/components/landing/old/animated-shiny-text";
 import {
     Accordion,
     AccordionContent,
